@@ -1,0 +1,36 @@
+# ============================================================
+# CareerZone X 核心运行依赖（不装 RAG 也能启动网站）
+# RAG 额外依赖在 requirements-rag.txt，避免首次安装被 torch 拖住。
+# 版本使用兼容区间，避免锁死导致安装失败；验收时记录实际版本。
+# ============================================================
+
+# Web API：FastAPI 负责路由/参数校验，Uvicorn 负责 ASGI 服务。
+fastapi>=0.115,<0.120
+uvicorn[standard]>=0.30,<0.40
+
+# ORM 与 MySQL 驱动：SQLAlchemy 2.x 统一 SQLite/MySQL 写法，PyMySQL 纯 Python 驱动。
+sqlalchemy>=2.0.36,<2.1
+pymysql>=1.1.1,<2
+cryptography>=43,<47
+
+# 配置与数据校验：pydantic-settings 从 .env 读配置，Pydantic 负责接口契约。
+pydantic>=2.9,<3
+pydantic-settings>=2.5,<3
+email-validator>=2.2,<3
+python-dotenv>=1.0,<2
+
+# 文件上传解析：multipart 处理表单，pypdf/docx 解析简历，Pillow 校验头像。
+python-multipart>=0.0.12,<0.1
+pypdf>=5.0,<7
+python-docx>=1.1,<2
+pillow>=10.4,<13
+
+# 安全：Argon2id 存密码哈希，itsdangerous 签管理员二次验证短令牌。
+argon2-cffi>=23.1,<26
+itsdangerous>=2.2,<3
+
+# LLM 与前端：用 requests 直接调 DeepSeek 的 OpenAI 兼容 HTTP 接口；Streamlit 做本机 UI。
+streamlit>=1.40,<2
+requests>=2.32,<3
+pandas>=2.0,<3
+plotly>=5.24,<7

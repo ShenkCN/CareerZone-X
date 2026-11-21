@@ -1,0 +1,27 @@
+# 项目元数据：只用于工具配置，不打包发布。
+[project]
+name = "careerzone-x"
+version = "0.4.0"
+description = "CareerZone X - 本地优先的 AI 求职工作台"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+# 测试固定从仓库根目录跑，保证 storage/tests 的相对路径一致。
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+  "ignore::DeprecationWarning",
+]
+
+[tool.ruff]
+# 只检查 Python 业务代码；前端 HTML/JS 不在 Ruff 范围内。
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+# F=未定义/未使用；E/W=基础风格；I=导入排序；B=常见 bug；UP=现代化写法。
+select = ["F", "E", "W", "I", "B", "UP"]
+# B008：FastAPI 的 Depends/File 就是写在默认参数里的，这是框架约定，不是 bug。
+# UP045/UP017/UP035：Optional/UTC 写法是团队可读性选择，不强制改。
+# B905：zip 的两边长度由同一个查询结果保证，strict 不是必须。
+ignore = ["E501", "B008", "B905", "UP045", "UP017", "UP035"]

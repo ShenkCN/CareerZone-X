@@ -1,0 +1,9 @@
+# 开发/验收依赖：-r 先装运行依赖，再装测试工具。
+-r requirements.txt
+
+# pytest 跑单元/接口测试；httpx 给 FastAPI TestClient 提供传输层。
+pytest>=8.3,<10
+httpx>=0.27,<1
+
+# ruff 做静态检查，避免明显的未使用变量/语法问题。
+ruff>=0.7,<1

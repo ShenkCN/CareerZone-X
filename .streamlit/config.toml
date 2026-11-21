@@ -1,0 +1,20 @@
+# ============================================================
+# Streamlit 本机配置：主题 + 最小工具栏。
+# 不放开 CORS/XSRF 给外部；只监听 127.0.0.1 由启动脚本控制。
+# ============================================================
+[theme]
+primaryColor = "#3f6f6a"
+backgroundColor = "#f4f1ea"
+secondaryBackgroundColor = "#ece7de"
+textColor = "#1f2933"
+font = "sans serif"
+
+[client]
+# 隐藏 Deploy/开发者工具，界面更像产品而不是 demo。
+toolbarMode = "minimal"
+showErrorDetails = true
+
+[server]
+headless = true
+# 上传上限与后端 MAX_RESUME_MB 保持一致（10MB + multipart 余量）。
+maxUploadSize = 12

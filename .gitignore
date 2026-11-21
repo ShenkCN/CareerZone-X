@@ -1,0 +1,30 @@
+# 敏感配置：只提交 .env.example，绝不提交真实 Key/密码。
+.env
+.env.*
+!.env.example
+
+# 本机数据：数据库、上传文件、向量库、导出包、日志、备份。
+storage/
+*.sqlite3
+*.db
+
+# Python 缓存与虚拟环境。
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# 编辑器/系统文件。
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 浏览器扩展打包产物。
+extension/*.zip
+
+# 大体积演示视频
+*.mp4
